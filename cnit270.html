@@ -1,1 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNIT 270 | Sameer Pirzada</title>
+  <link rel="icon" type="image/png" href="newPFP (1).png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --bg-color: #0a1128;
+      --card-bg: #111f42;
+      --text-main: #ffffff;
+      --text-muted: #94a3b8;
+      --accent: #ef4444;
+      --nav-bg: #070d20;
+    }
 
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: transparent;
+      color: var(--text-main);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    #vanta-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      background-color: var(--nav-bg);
+      border-bottom: 1px solid rgba(250, 204, 21, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 20px;
+      height: 60px;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tab, .nav-tab:visited {
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0 12px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-tab:hover, .nav-tab.active {
+      color: var(--accent);
+    }
+
+    /* Course Header Banner */
+    .course-header {
+      max-width: 900px;
+      margin: 40px auto 20px auto;
+      padding: 30px 20px;
+      text-align: center;
+      background: rgba(10, 17, 40, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 12px;
+    }
+
+    .course-header h1 {
+      font-size: 2.2rem;
+      margin: 0 0 8px 0;
+    }
+
+    .course-subtitle {
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 12px;
+    }
+
+    .course-desc {
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 0.95rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .back-btn:hover {
+      text-decoration: underline;
+    }
+
+    /* Layout & Cards */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .lab-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      border-top: 3px solid var(--accent);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+      padding: 25px;
+      margin-bottom: 40px;
+    }
+
+    .lab-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .lab-meta h2 {
+      margin: 0;
+      font-size: 1.4rem;
+      color: var(--text-main);
+    }
+
+    .download-link {
+      color: var(--accent);
+      font-size: 0.9rem;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .download-link:hover {
+      text-decoration: underline;
+    }
+
+    .lab-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    /* Scrollable PDF Embed Container */
+    .pdf-viewer-container {
+      width: 100%;
+      height: 550px;
+      border-radius: 6px;
+      overflow: hidden;
+      background-color: #0d172e;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .pdf-viewer-container iframe,
+    .pdf-viewer-container embed {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    @media (max-width: 650px) {
+      .pdf-viewer-container {
+        height: 420px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="vanta-bg"></div>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">Sameer Pirzada</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-tab">Home</a>
+        <a href="coursework.html" class="nav-tab active">Course Work</a>
+        <a href="projects.html" class="nav-tab">Projects</a>
+        <a href="https://www.rezume.so/sameerpirzada" target="_blank" class="nav-tab">Resume</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header Banner -->
+  <header class="course-header">
+    <a href="coursework.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Coursework</a>
+    <h1>CNIT 270</h1>
+    <div class="course-subtitle">Systems Analysis and Design Methods</div>
+    <p class="course-desc">A compilation of 5 comprehensive laboratory reports exploring security frameworks, threat assessment, technical controls, and vulnerability mitigation.</p>
+  </header>
+
+  <main>
+    <!-- Lab 1 -->
+    <article class="lab-card">
+      <div class="lab-meta">
+        <h2>Lab Report 1: Title of Lab 1</h2>
+        <a href="pdfs/cnit270-lab1.pdf" target="_blank" class="download-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+        </a>
+      </div>
+      <p class="lab-desc">Brief summary explaining the lab objectives, tools analyzed, security policies evaluated, and major findings.</p>
+      <div class="pdf-viewer-container">
+        <iframe src="pdfs/cnit270-lab1.pdf#toolbar=1&navpanes=0" type="application/pdf">
+          <p>Your browser doesn't support embedded PDFs. <a href="pdfs/cnit270-lab1.pdf" class="download-link">Download Lab 1 PDF</a>.</p>
+        </iframe>
+      </div>
+    </article>
+
+    <!-- Lab 2 -->
+    <article class="lab-card">
+      <div class="lab-meta">
+        <h2>Lab Report 2: Title of Lab 2</h2>
+        <a href="pdfs/cnit270-lab2.pdf" target="_blank" class="download-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+        </a>
+      </div>
+      <p class="lab-desc">Brief summary explaining the lab objectives, tools analyzed, security policies evaluated, and major findings.</p>
+      <div class="pdf-viewer-container">
+        <iframe src="pdfs/cnit270-lab2.pdf#toolbar=1&navpanes=0" type="application/pdf">
+          <p>Your browser doesn't support embedded PDFs. <a href="pdfs/cnit270-lab2.pdf" class="download-link">Download Lab 2 PDF</a>.</p>
+        </iframe>
+      </div>
+    </article>
+
+    <!-- Lab 3 -->
+    <article class="lab-card">
+      <div class="lab-meta">
+        <h2>Lab Report 3: Title of Lab 3</h2>
+        <a href="pdfs/cnit270-lab3.pdf" target="_blank" class="download-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+        </a>
+      </div>
+      <p class="lab-desc">Brief summary explaining the lab objectives, tools analyzed, security policies evaluated, and major findings.</p>
+      <div class="pdf-viewer-container">
+        <iframe src="pdfs/cnit270-lab3.pdf#toolbar=1&navpanes=0" type="application/pdf">
+          <p>Your browser doesn't support embedded PDFs. <a href="pdfs/cnit270-lab3.pdf" class="download-link">Download Lab 3 PDF</a>.</p>
+        </iframe>
+      </div>
+    </article>
+
+    <!-- Lab 4 -->
+    <article class="lab-card">
+      <div class="lab-meta">
+        <h2>Lab Report 4: Title of Lab 4</h2>
+        <a href="pdfs/cnit270-lab4.pdf" target="_blank" class="download-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+        </a>
+      </div>
+      <p class="lab-desc">Brief summary explaining the lab objectives, tools analyzed, security policies evaluated, and major findings.</p>
+      <div class="pdf-viewer-container">
+        <iframe src="pdfs/cnit270-lab4.pdf#toolbar=1&navpanes=0" type="application/pdf">
+          <p>Your browser doesn't support embedded PDFs. <a href="pdfs/cnit270-lab4.pdf" class="download-link">Download Lab 4 PDF</a>.</p>
+        </iframe>
+      </div>
+    </article>
+
+    <!-- Lab 5 -->
+    <article class="lab-card">
+      <div class="lab-meta">
+        <h2>Lab Report 5: Title of Lab 5</h2>
+        <a href="pdfs/cnit270-lab5.pdf" target="_blank" class="download-link">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Open in New Tab
+        </a>
+      </div>
+      <p class="lab-desc">Brief summary explaining the lab objectives, tools analyzed, security policies evaluated, and major findings.</p>
+      <div class="pdf-viewer-container">
+        <iframe src="pdfs/cnit270-lab5.pdf#toolbar=1&navpanes=0" type="application/pdf">
+          <p>Your browser doesn't support embedded PDFs. <a href="pdfs/cnit270-lab5.pdf" class="download-link">Download Lab 5 PDF</a>.</p>
+        </iframe>
+      </div>
+    </article>
+  </main>
+
+  <!-- Interactive Vanta Background Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+  <script>
+    VANTA.NET({
+      el: "#vanta-bg",
+      mouseControls: true,
+      touchControls: true,
+      gyroControls: false,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0xef4444,
+      backgroundColor: 0x0a1128,
+      points: 11.00,
+      maxDistance: 21.00,
+      spacing: 16.00
+    });
+  </script>
+</body>
+</html>
